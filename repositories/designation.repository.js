@@ -1,4 +1,4 @@
-const { Designation } = require('../models/designation');
+const Designation = require('../models/designation');
 
 exports.findAll = () => Designation.findAll();
 

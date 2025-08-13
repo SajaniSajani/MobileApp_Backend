@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
-const { sequelize } = require('./models/designation');
+const { sequelize } = require('./config/database');
 const Role = require('./models/role');
 require('./models/release_type');
 require('./models/defect_type');
 require('./models/priority');
 const Severity = require('./models/severity');
 const Defect_status = require('./models/defect_status');
-const User = require('./models/User');
+const User = require('./models/user');
 const Project = require('./models/project');
 const Module = require('./models/modules');
 const Email_user = require('./models/email_user');
@@ -28,6 +28,7 @@ const group_Privilege = require('./models/group_privilege')
 const user_privilege = require('./models/user_privilege')
 const project_user_privilege = require('./models/project_user_privilege')
 const designationRoutes = require('./routes/designation.routes');
+const projectRoutes = require('./routes/project.routes');
 const association = require('./models/association');
 
 
@@ -35,6 +36,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/designations', designationRoutes);
+app.use('/api/projects', projectRoutes);
 
 // Welcome route for root
 app.get('/', (req, res) => {
