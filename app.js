@@ -30,6 +30,7 @@ const project_user_privilege = require('./models/project_user_privilege')
 const designationRoutes = require('./routes/designation.routes');
 const projectRoutes = require('./routes/project.routes');
 const defectRoutes = require('./routes/defect.routes');
+const dashboardRoutes = require('./routes/dashboard.routes');
 const association = require('./models/association');
 
 
@@ -39,6 +40,7 @@ app.use(express.json());
 app.use('/api/designations', designationRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/defects', defectRoutes);
+app.use('/api/dashboard', dashboardRoutes);
 
 // Welcome route for root
 app.get('/', (req, res) => {
