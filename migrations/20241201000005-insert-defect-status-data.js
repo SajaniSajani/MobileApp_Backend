@@ -23,6 +23,14 @@ module.exports = {
       {
         defect_status_name: 'Reopened',
         color_code: '#dc3545'
+      },
+      {
+        defect_status_name: 'Reject',
+        color_code: '#dc3545'
+      },
+      {
+        defect_status_name: 'Duplicate',
+        color_code: '#6c757d'
       }
     ], {});
   },
