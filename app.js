@@ -70,7 +70,7 @@ const PORT = process.env.PORT || 3000;
     console.log('Models synced');
 
     app.listen(PORT, () => {
-      console.log(` Server running at http://localhost:${PORT}`);
+      console.log(` Server running at http://192.168.1.7:${PORT}`);
     });
   } catch (error) {
     console.error(' DB connection failed:', error.message);

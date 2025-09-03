@@ -60,6 +60,67 @@ class DashboardController {
             });
         }
     }
+
+    async getDefectSeverityIndex(req, res) {
+        try {
+            const { projectId } = req.params;
+            const result = await DashboardService.getDefectSeverityIndex(projectId);
+
+            res.status(200).json(result);
+        } catch (error) {
+            if (error.message && error.message.startsWith('Project not found')) {
+                return res.status(404).json({ 
+                    success: false, 
+                    message: 'Project not found' 
+                });
+            }
+            
+            res.status(500).json({
+                success: false,
+                message: 'Error retrieving Defect Severity Index',
+                error: error.message
+            });
+        }
+    }
+
+    async getDefectSeverityBreakdown(req, res) {
+        try {
+            const { projectId } = req.params;
+            const result = await DashboardService.getDefectSeverityBreakdown(projectId);
+            res.status(200).json({ success: true, data: result, message: 'Defect severity breakdown retrieved successfully' });
+        } catch (error) {
+            if (error.message && error.message.startsWith('Project not found')) {
+                return res.status(404).json({ success: false, message: 'Project not found' });
+            }
+            res.status(500).json({ success: false, message: 'Error retrieving defect severity breakdown', error: error.message });
+        }
+    }
+
+    async getDefectSummaryByModule(req, res) {
+        try {
+            const { projectId } = req.params;
+            const result = await DashboardService.getDefectSummaryByModule(projectId);
+            res.status(200).json({ success: true, data: result, message: 'Defect summary by module retrieved successfully' });
+        } catch (error) {
+            if (error.message && error.message.startsWith('Project not found')) {
+                return res.status(404).json({ success: false, message: 'Project not found' });
+            }
+            res.status(500).json({ success: false, message: 'Error retrieving defect summary by module', error: error.message });
+        }
+    }
+
+    async getDefectTypeBreakdown(req, res) {
+        try {
+            const { projectId } = req.params;
+            const result = await DashboardService.getDefectTypeBreakdown(projectId);
+            res.status(200).json({ success: true, data: result, message: 'Defect type breakdown retrieved successfully' });
+        } catch (error) {
+            if (error.message && error.message.startsWith('Project not found')) {
+                return res.status(404).json({ success: false, message: 'Project not found' });
+            }
+            res.status(500).json({ success: false, message: 'Error retrieving defect type breakdown', error: error.message });
+        }
+    }
 }
 
 module.exports = new DashboardController();
